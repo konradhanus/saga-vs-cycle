@@ -1,31 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
+
 import { makeStyles } from '@material-ui/core/styles';
-import SendIcon from '@material-ui/icons/Send';
 import SyncIcon from '@material-ui/icons/Sync';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-const useStyles = makeStyles(theme => ({
-    button: {
-      margin: theme.spacing(1),
-    },
-  }));
+const useStyles = makeStyles((theme) => ({
+	button: {
+		margin: theme.spacing(1)
+	}
+}));
 
-const Item = (props) => {
-    const classes = useStyles();
-console.log(props.cart)
-return (<div style={{display: 'flex'}}>
-    <div>
-     {props.children}
-     </div>
-     <div> {props.name}</div>
-     <div>
-     <SyncIcon /></div></div>)};
+const classItem = {
+	width: '200px'
+};
+
+const classItemRotate = {
+  ...classItem,
+  animation: 'App-logo-spin infinite 0.5s linear'
+}
+
+const Item = ({children, name, status}) => {
+	return (
+		<div style={{ display: 'flex', justifyContent: 'space-around' }}>
+			<div style={classItem}>{children}</div>
+			<div style={classItem}>{name}</div>
+			{status === 1 ?
+			<div style={classItem}></div>:
+			status === 2 ? 
+			<div style={classItemRotate}>
+				<SyncIcon />
+			</div>:
+			<div style={classItem}>
+				<CheckCircleIcon />
+			</div>}
+		</div>
+	);
+};
 
 const mapStateToProps = (state) => ({
-    cart: state.cart
+	cart: state.cart
 });
 
-export default connect(
-  mapStateToProps,
-)(Item)
+export default connect(mapStateToProps)(Item);
