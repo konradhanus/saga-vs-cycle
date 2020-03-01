@@ -10,7 +10,6 @@ function App() {
 				<h1>React <img src={logo} className="App-logo" alt="logo" />Travel Agency</h1>
 				<Cart />
 			</header>
-      
 		</div>
 	);
 }

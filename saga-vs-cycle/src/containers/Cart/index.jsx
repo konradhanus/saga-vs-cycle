@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Cart = (props) => {
   const classes = useStyles();
-  console.log(props.itemsList);
 	return (
     <>
     {props.itemsList.map((item)=>(
@@ -26,7 +25,15 @@ const Cart = (props) => {
       className={classes.button} 
       endIcon={<SendIcon />}
       onClick={()=>props.cartSendUsingSaga()}>
-			Send
+			Send using saga
+		</Button>
+    <Button 
+      variant="contained" 
+      color="primary" 
+      className={classes.button} 
+      endIcon={<SendIcon />}
+      onClick={()=>props.cartSendUsingCycle({x:1, y:2})}>
+			Send using cycle
 		</Button>
     </>
 	);

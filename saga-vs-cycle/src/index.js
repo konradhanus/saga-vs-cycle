@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import initSagas from './initSagas'; 
 import configureStore, { sagaMiddleware } from './store';
 
-const store = configureStore();
+export const store = configureStore();
 
 initSagas(sagaMiddleware);
 
